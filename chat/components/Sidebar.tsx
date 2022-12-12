@@ -6,6 +6,9 @@ import { CloseIcon } from "@chakra-ui/icons";
 import { getAuth, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebaseconfig";
+import { useCollection } from 'react-firebase-hooks/firestore';
+import { collection } from "firebase/firestore";
+import { db } from "../firebaseconfig";
 
 const Chat = () => {
   return (
@@ -18,6 +21,9 @@ const Chat = () => {
 
 const Sidebar = () => {
   const [user] = useAuthState(auth);
+  const [snapshot, loading, error] = useCollection(collection(db, "chats"));
+  const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+  console.log(chats);
   return (
     <Flex
       // bg="blue.200"

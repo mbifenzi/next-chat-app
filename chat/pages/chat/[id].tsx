@@ -3,6 +3,7 @@ import { Avatar, FormControl, Input } from "@chakra-ui/react";
 import { Button } from "@chakra-ui/button";
 import React from "react";
 import Sidebar from "../../components/Sidebar";
+import Head from "next/head";
 
 const TopBar = () => {
   return (
@@ -25,6 +26,9 @@ const BottomBar = () => {
 const Chat = () => {
   return (
     <Flex h="100vh">
+      <Head>
+        <title>Ponx Chat</title>
+      </Head>
       <Sidebar />
       <Flex flex={1} flexDirection="column">
         <TopBar />
