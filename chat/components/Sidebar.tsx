@@ -7,23 +7,40 @@ import { getAuth, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../firebaseconfig";
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { collection } from "firebase/firestore";
+import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseconfig";
+import getOtherEmails from "../utils/getOtherEmails";
+import { useRouter } from "next/router";
 
-const Chat = () => {
-  return (
-    <Flex p={3} align="center" _hover={{ bg: "gray.100", cursor: "pointer" }}>
-      <Avatar src="" marginEnd={3} />
-      <Text>khchafikba9lo@gmail.zb</Text>
-    </Flex>
-  );
-};
+
 
 const Sidebar = () => {
   const [user] = useAuthState(auth);
   const [snapshot, loading, error] = useCollection(collection(db, "chats"));
   const chats = snapshot?.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-  console.log(chats);
+  const router = useRouter();
+  const redirect = (id:any) => {
+    router.push(`/chat/${id}`);
+  }
+  const chatList = () => {
+    return (chats?.filter(chat => chat?.users.includes(user?.email)).map(chat => 
+        <Flex key={Math.random()} p={3} align="center" _hover={{ bg: "gray.100", cursor: "pointer" }} onClick={() => redirect(chat.id)}>
+          <Avatar src="" marginEnd={3} />
+          <Text>{getOtherEmails(chat?.users, user)}</Text>
+        </Flex>)
+    )
+  }
+
+  const chatExists = email => chats?.find(chat => chat?.users.includes(email) && chat?.users.includes(user?.email));
+
+
+  const newChat = async () => {
+    const input = prompt("Enter email address");
+    if (!chatExists(input)) {
+      await addDoc(collection(db, "chats"), { users: [user?.email, input] });
+  }
+}
+
   return (
     <Flex
       // bg="blue.200"
@@ -44,37 +61,17 @@ const Sidebar = () => {
         borderColor="gray.300"
       >
         <Flex align="center">
-          <Avatar src={user?.photoURL} marginEnd={3} />
+          <Avatar src={`${user?.photoURL}`} marginEnd={3} />
           <Text>{user?.displayName}</Text>
         </Flex>
         <IconButton aria-label="" size="sm" icon={<CloseIcon />} onClick={() => signOut(auth)}/>
       </Flex>
-      <Button m={5} p={4}>
+      <Button m={5} p={4} onClick={() => newChat()}>
         New Chat
       </Button>
       <Flex overflowX="scroll" direction="column" flex={1}>
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
-        <Chat />
+        {chatList()}
+
       </Flex>
     </Flex>
   );
