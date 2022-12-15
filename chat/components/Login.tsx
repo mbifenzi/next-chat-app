@@ -22,7 +22,7 @@ const Login = () => {
         >
           <ChatIcon w="100px" h="100px" color="white" />
         </Box>
-        <Button boxShadow="md" onClick={() => signInWithGoogle("", {prompt:"select_account"})}>Sign in With Google</Button>
+        <Button boxShadow="md" onClick={() => signInWithGoogle([""], {prompt:"select_account"})}>Sign in With 42</Button>
       </Stack>
     </Center>
   );
