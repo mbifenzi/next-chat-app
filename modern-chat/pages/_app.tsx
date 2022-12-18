@@ -10,7 +10,13 @@ export default function App({ Component, pageProps }: AppProps) {
   const {username} = userContext();
   console.log(username);
 
-  // if (!user) return <Login />;
+  if (!username)
+    {
+      return (
+          <Login />
+      );
+
+    }
   return (
     <ContextProvider>
       <Component {...pageProps} />

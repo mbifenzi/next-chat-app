@@ -9,7 +9,7 @@ interface ContextProps {
   rooms: string[];
 }
 const Context = createContext<ContextProps>({
-  username: "pp",
+  username: "",
   chat: [ {message: "", friend: ""}],
   friends: [""],
   avatar: "",
@@ -27,11 +27,11 @@ export const ContextProvider = ({children}: {children:React.ReactNode}) => {
   return (
     <Context.Provider
       value={{
-        username,
-        chat,
-        friends,
-        avatar,
-        rooms,
+        username, setUsername,
+        chat, setChat,
+        friends,  setFriends,
+        avatar, setAvatar,
+        rooms, setRooms,
       }}
     >
     </Context.Provider>
