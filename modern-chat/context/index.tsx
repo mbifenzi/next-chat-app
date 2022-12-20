@@ -1,33 +1,31 @@
 
 import React, { useState, createContext, useContext } from "react";
 
-const getUserData =  ()  =>{
+const getUserData = () =>{
 
   var data : ContextProps =  {
-    username: "",
+    username: "mbifenzi",
     avatar: "",
+    chat: [],
+    friends: [],
+    rooms: [],
   
     }
     return data
   // axios.get("http://localhost:3000/api/user").then((res) => {
      // data = res.data;
   // }).catch((err) => {
-    // o to
+    // o the error
   }
 
     
 
 interface ContextProps {
   username: string;
-  // chat: {message: string, friend: string}[],
-  // friends: string[];
+  chat: {message: string, friend: string}[],
+  friends: string[];
   avatar: string;
-  // rooms: string[];
-  // setUsername : (name : string) => void,
-  // setChat : (chat : {message: string, friend: string}[]) => void,
-  // setFriends : (friends : string[]) => void,
-  // setAvatar : (avatar : string) => void,
-  // setRooms : (rooms : string[]) => void,
+  rooms: string[];
 }
  
 export const Context = createContext(getUserData());
@@ -38,16 +36,10 @@ export const ContextProvider = ({children}: {children:React.ReactNode}) => {
   
   const userContext = {
     username: "",
-    // chat: [ {message: "", friend: ""}],
-    // friends: [""],
+    chat: [ {message: "", friend: ""}],
+    friends: [""],
     avatar: "",
-    // rooms: [""],
-    // setUsername,
-    // setFriends,
-    // setChat,
-    // setAvatar,
-    // setRooms,
-
+    rooms: [""],
   }
 
   function setUsername(username: string) {

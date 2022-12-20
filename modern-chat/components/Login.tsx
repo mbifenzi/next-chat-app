@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { Context } from "../context";
+
 const Login = () => {
   const user = useContext(Context);
-  return (
+  // console.log(user.username)
+;  return (
     <div className="w-screen h-screen bg-[#303841] flex justify-center items-center">
       <form className="w-2/5 h-1/4 bg-slate-600 flex flex-col justify-around items-center rounded-3xl"
         >
