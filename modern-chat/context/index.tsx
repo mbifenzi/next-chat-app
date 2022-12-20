@@ -2,20 +2,19 @@
 import React, { useState, createContext, useContext } from "react";
 
 const getUserData = () =>{
-
+  
   var data : ContextProps =  {
     username: "mbifenzi",
     avatar: "",
     chat: [],
     friends: [],
     rooms: [],
-  
-    }
-    return data
+  }
   // axios.get("http://localhost:3000/api/user").then((res) => {
      // data = res.data;
   // }).catch((err) => {
     // o the error
+    return data
   }
 
     
