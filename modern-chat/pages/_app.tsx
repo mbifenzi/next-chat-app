@@ -4,22 +4,25 @@ import Login from "../components/Login";
 import { useState } from "react";
 import {ContextProvider} from "../context";
 import { useContext } from "react";
-import { userContext } from "../context";
+// import { userContext } from "../context";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const {username} = userContext();
-  console.log(username);
+  // const {username} = userContext();
+  // console.log(username);
 
-  if (!username)
-    {
+  // if (!username)
+  //   {
       return (
+        <div>
+salam
           <Login />
+        </div>
       );
 
-    }
-  return (
-    <ContextProvider>
-      <Component {...pageProps} />
-    </ContextProvider>
-  );
+    // }
+  // return (
+  //   <ContextProvider>
+  //     <Component {...pageProps} />
+  //   </ContextProvider>
+  // );
 }
