@@ -5,7 +5,7 @@ import Leftbar from "../../components/Leftbar";
 import { Context } from "../../context";
 
 const dashboard = () => {
-  const { username } = React.useContext(Context);
+  const { username,  } = React.useContext(Context);
   const router = useRouter();
   const { id } = router.query;
   return (

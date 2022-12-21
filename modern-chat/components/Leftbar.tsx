@@ -12,7 +12,7 @@ import dashboard from "../pages/dashboard/[id]";
 import { Context } from "../context";
 
 
-const icons = "h-14 w-14 text-[#A6B0CF] hover:bg-[#3E4A56] p-3 rounded-lg"
+const icons = "h-14 w-14 text-[#A6B0CF] hover:bg-[#3E4A56] p-3 rounded-lg cursor-pointer"
 
 const Leftbar = () => {
   const { username, id } = React.useContext(Context);
@@ -44,9 +44,9 @@ const Leftbar = () => {
         <FiSettings className={icons}/>
         
       </div>
-      <div>
+      <div className="rounded-full cursor-pointer">
         <Image src={face.src} alt="test" width={100} height={100} 
-        className=" rounded-full p-3"/>
+         className=" rounded-full p-3 cursor-pointer"/>
       </div>
     </div>
   );
