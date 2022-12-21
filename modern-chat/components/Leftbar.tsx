@@ -17,14 +17,10 @@ const icons = "h-14 w-14 text-[#A6B0CF] hover:bg-[#3E4A56] p-3 rounded-lg cursor
 const Leftbar = () => {
   const { username, id } = React.useContext(Context);
   const router = useRouter();
-  const redirect = (id:number) => {
-    router.push(`/dashboard/${id}`);
+  const redirect = (id:string) => {
+    router.push(`${id}`);
   }
-  const khriwa = () => {
-    <div>
-      <h1>khriwa</h1>
-    </div>
-  }
+
   return (
     <div
       className=" w-20 h-screen bg-[#36404A] flex flex-col 
@@ -35,14 +31,13 @@ const Leftbar = () => {
       </div>
       <div
         className="w-full h-full flex flex-col justify-center 
-              space-y-4 items-center"
-      >
-        <BiUser className={icons} onClick={() => redirect(id)}/>
-        <BsChatDots className={icons}/>
-        <FiUsers className={icons}/>
-        <BiSmile className={icons}/>
-        <FiSettings className={icons}/>
-        
+              space-y-4 items-center">
+        <BiUser className={icons} onClick={() => redirect(`/dashboard/${id}`)}/>
+        <BiSmile className={icons} onClick={() => redirect(`/friends/${id}`)}/>
+        <BsChatDots className={icons} onClick={() => redirect(`/chat/${id}`)}/>
+        <FiUsers className={icons} onClick={() => redirect(`/rooms/${id}`)}/>
+        <FiSettings className={icons} onClick={() => redirect(`/settings/${id}`)}/>
+
       </div>
       <div className="rounded-full cursor-pointer">
         <Image src={face.src} alt="test" width={100} height={100} 
