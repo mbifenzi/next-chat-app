@@ -9,6 +9,7 @@ const getUserData = () =>{
     chat: [],
     friends: [],
     rooms: [],
+    id: 1,
   }
   // axios.get("http://localhost:3000/api/user").then((res) => {
      // data = res.data;
@@ -25,6 +26,7 @@ interface ContextProps {
   friends: string[];
   avatar: string;
   rooms: string[];
+  id: number;
 }
  
 export const Context = createContext(getUserData());
@@ -39,10 +41,7 @@ export const ContextProvider = ({children}: {children:React.ReactNode}) => {
     friends: [""],
     avatar: "",
     rooms: [""],
-  }
-
-  function setUsername(username: string) {
-    userContext.username = username;
+    id: 1,
   }
   
   return (

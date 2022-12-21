@@ -24,7 +24,7 @@ export default function Home() {
       </Head>
       <main className="bg-white flex">
         <Leftbar />
-        <Middlebar />
+        {/* <Middlebar /> */}
 
       </main>
     </>
