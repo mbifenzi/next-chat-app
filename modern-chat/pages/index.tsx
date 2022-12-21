@@ -4,9 +4,10 @@ import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 
 import { useState, createContext, useContext } from "react";
-import LOGO from "public/assets/logo.png";
+
 import { Context } from "../context";
 import Leftbar from "../components/Leftbar";
+import Middlebar from "../components/Middlebar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,8 @@ export default function Home() {
       </Head>
       <main className="bg-white flex">
         <Leftbar />
+        <Middlebar />
+
       </main>
     </>
   );
