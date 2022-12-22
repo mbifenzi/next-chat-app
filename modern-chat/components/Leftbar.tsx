@@ -23,7 +23,7 @@ const Leftbar = () => {
 
   return (
     <div
-      className=" w-20 h-screen bg-[#36404A] flex flex-col 
+      className=" w-30 h-screen bg-[#36404A] flex flex-col 
       justify-around drop-shadow-lg"
     >
       <div className="flex justify-center items-center">
