@@ -9,7 +9,6 @@ const getUserData = () =>{
     lastName: "bifenzi",
     email: "mbifenzi@1337.student.ma",
     avatar: "",
-    chat: [],
     friends: [],
     rooms: [],
     id: 1,
@@ -28,7 +27,6 @@ interface ContextProps {
   firstName: string;
   lastName: string;
   email: string;
-  chat: {message: string, friend: string}[],
   friends: string[];
   avatar: string;
   rooms: string[];
@@ -46,7 +44,6 @@ export const ContextProvider = ({children}: {children:React.ReactNode}) => {
     firstName: "",
     lastName: "",
     email: "",
-    chat: [ {message: "", friend: ""}],
     friends: [""],
     avatar: "",
     rooms: [""],
@@ -56,7 +53,7 @@ export const ContextProvider = ({children}: {children:React.ReactNode}) => {
   return (
     <Context.Provider
       value={userContext}
-    >
+      >
     </Context.Provider>
   );
 };
