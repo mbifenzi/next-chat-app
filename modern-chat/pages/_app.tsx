@@ -9,7 +9,6 @@ import { Context } from "../context";
 export default function App({ Component, pageProps }: AppProps) {
   const { username } = useContext(Context);
   // console.log(username);
-
   if (!username)
     {
       return (
