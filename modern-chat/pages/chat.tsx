@@ -1,22 +1,21 @@
 import Head from "next/head";
 import React from "react";
-import Leftbar from "../../components/Leftbar";
-import { Context } from "../../context";
+import Leftbar from "../components/Leftbar";
+import { Context } from "../context";
 import { useRouter } from "next/router";
 import { BiSearchAlt2 } from "react-icons/bi";
-import friend1 from "../../assets/friends/friend1.jpeg";
-import friend2 from "../../assets/friends/friend2.jpeg";
-import friend3 from "../../assets/friends/friend3.jpeg";
+import friend1 from "../assets/friends/friend1.jpeg";
+import friend2 from "../assets/friends/friend2.jpeg";
+import friend3 from "../assets/friends/friend3.jpeg";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import Convo from "../../components/Convo";
+import Convo from "../components/Convo";
 import Link from "next/link";
 
 const Chat = () => {
-  const { username, } = React.useContext(Context);
+  const { username, id } = React.useContext(Context);
   const router = useRouter();
-  const { id } = router.query;
-  console.log(id);
+  // const { id } = router.query;
   const redirect = (id: string) => {
     router.push(`${id}`);
   };
@@ -138,7 +137,7 @@ const Chat = () => {
             ))}
           </div>
         </div>
-        <Convo id={id} />
+        <Convo />
       </div>
     </div>
   );

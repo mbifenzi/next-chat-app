@@ -4,22 +4,23 @@ import logo from "../assets/logo.png";
 import face from "../assets/face.jpg";
 import { BiUser } from "react-icons/bi";
 import { BsChatDots } from "react-icons/bs";
-import { FiUsers } from  "react-icons/fi";
+import { FiUsers } from "react-icons/fi";
 import { BiSmile } from "react-icons/bi";
 import { FiSettings } from "react-icons/fi";
 import { useRouter } from "next/router";
 import dashboard from "../pages/dashboard/[id]";
 import { Context } from "../context";
+import Link from "next/link";
 
-
-const icons = "h-14 w-14 text-[#A6B0CF] hover:bg-[#3E4A56] p-3 rounded-lg cursor-pointer"
+const icons =
+  "h-14 w-14 text-[#A6B0CF] hover:bg-[#3E4A56] p-3 rounded-lg cursor-pointer";
 
 const Leftbar = () => {
   const { username, id } = React.useContext(Context);
   const router = useRouter();
-  const redirect = (id:string) => {
+  const redirect = (id: string) => {
     router.push(`${id}`);
-  }
+  };
 
   return (
     <div
@@ -31,17 +32,32 @@ const Leftbar = () => {
       </div>
       <div
         className="w-full h-full flex flex-col justify-center 
-              space-y-4 items-center">
-        <BiUser className={icons} onClick={() => redirect(`/dashboard/${id}`)}/>
-        <BiSmile className={icons} onClick={() => redirect(`/friends/${id}`)}/>
-        <BsChatDots className={icons} onClick={() => redirect(`/chat/${id}`)}/>
-        <FiUsers className={icons} onClick={() => redirect(`/rooms/${id}`)}/>
-        <FiSettings className={icons} onClick={() => redirect(`/settings/${id}`)}/>
-
+              space-y-4 items-center"
+      >
+        <Link href={"/dashboard"}>
+          <BiUser className={icons} />
+        </Link>
+        <Link href={"/friends"}>
+          <BiSmile className={icons} />
+        </Link>
+        <Link href={"/chat"}>
+          <BsChatDots className={icons} />
+        </Link>
+        <Link href={"/rooms"}>
+          <FiUsers className={icons} />
+        </Link>
+        <Link href={"/settings"}>
+          <FiSettings className={icons} />
+        </Link>
       </div>
       <div className="rounded-full cursor-pointer">
-        <Image src={face.src} alt="test" width={100} height={100} 
-         className=" rounded-full p-3 cursor-pointer"/>
+        <Image
+          src={face.src}
+          alt="test"
+          width={100}
+          height={100}
+          className=" rounded-full p-3 cursor-pointer"
+        />
       </div>
     </div>
   );
