@@ -122,7 +122,7 @@ const Chat = () => {
           <div className="text-2xl text-white p-5 text-left">Recent</div>
           <div className="text-4xl text-black w-full flex justify-center items-center flex-col">
             {chatData.map((chat) => (
-              <div className="flex hover:bg-slate-400 transition duration-300  gap-3 w-[95%] rounded-lg">
+              <Link href={`/chat/${chat.id}`} className=" cursor-pointer flex hover:bg-slate-400 transition duration-300  gap-3 w-[95%] rounded-lg">
                 <div className="flex justify-center items-center h-20">
                   <img
                     src={`${chat.avatar.src}`}
@@ -133,11 +133,14 @@ const Chat = () => {
                 <div className="flex flex-col justify-center items-center h-20">
                   <div className="text-2xl text-white">{chat.name}</div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
-        <Convo />
+        {/* <Convo /> */}
+        <div className="bg-[#262E34] h-full w-full">
+
+        </div>
       </div>
     </div>
   );

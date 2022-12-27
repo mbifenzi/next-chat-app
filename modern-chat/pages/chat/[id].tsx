@@ -13,7 +13,7 @@ import Convo from "../../components/Convo";
 import Link from "next/link";
 
 const Chat = () => {
-  const { username, } = React.useContext(Context);
+  const { username } = React.useContext(Context);
   const router = useRouter();
   const { id } = router.query;
   console.log(id);
@@ -104,7 +104,10 @@ const Chat = () => {
             >
               {onlineFriends.map((friend) => (
                 <SwiperSlide className=" cursor-pointer">
-                  <Link href={`/chat/${friend.id}`} className="flex flex-col hover:bg-slate-400 transition duration-300  w-[95%] rounded-lg p-1">
+                  <Link
+                    href={`/chat/${friend.id}`}
+                    className="flex flex-col hover:bg-slate-400 transition duration-300  w-[95%] rounded-lg p-1"
+                  >
                     <div className="flex justify-center items-center">
                       <img
                         src={`${friend.avatar.src}`}
@@ -123,7 +126,10 @@ const Chat = () => {
           <div className="text-2xl text-white p-5 text-left">Recent</div>
           <div className="text-4xl text-black w-full flex justify-center items-center flex-col">
             {chatData.map((chat) => (
-              <div className="flex hover:bg-slate-400 transition duration-300  gap-3 w-[95%] rounded-lg">
+              <Link
+                href={`/chat/${chat.id}`}
+                className=" cursor-pointer flex hover:bg-slate-400 transition duration-300  gap-3 w-[95%] rounded-lg"
+              >
                 <div className="flex justify-center items-center h-20">
                   <img
                     src={`${chat.avatar.src}`}
@@ -134,11 +140,11 @@ const Chat = () => {
                 <div className="flex flex-col justify-center items-center h-20">
                   <div className="text-2xl text-white">{chat.name}</div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
-        <Convo id={id} />
+        <Convo />
       </div>
     </div>
   );

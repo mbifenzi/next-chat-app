@@ -2,25 +2,110 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const Convo = () => {
+  const coversation = [
+    {
+      id: 1,
+      sender: "me",
+      message: "hello me",
+      time: "12:00",
+    },
+    {
+      id: 2,
+      sender: "friend",
+      message: "hello him",
+      time: "12:00",
+    },
+  ];
   const router = useRouter();
   const { id } = router.query;
-  const sender = "me";
-  const message = "hello";
   const time = "12:00";
-  
-  // 
-  //fetch chat data using that id
-  // store chat data in state
-  // render chat data
-  return (
-    <div className="w-full h-full bg-[#262E35]">
-      <div className="flex justify-center items-center h-20">
-        <div className="text-4xl text-white">{id}</div>
-      </div>
-      <div className="flex justify-center items-center h-full">
-        <div className="text-xl text-white">
+  const [chatData, setChatData] = React.useState(coversation);
+  const [message, setMessage] = React.useState("");
 
+  const [messageInput, setMessageInput] = React.useState("");
+  const [chatId, setChatId] = React.useState(id);
+  const [chatName, setChatName] = React.useState("");
+  const [chatAvatar, setChatAvatar] = React.useState("");
+  const [chatLastMessage, setChatLastMessage] = React.useState("");
+  const [chatLastMessageTime, setChatLastMessageTime] = React.useState("");
+  const [chatUnreadMessages, setChatUnreadMessages] = React.useState(0);
+
+  const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const newMessage = {
+      id: chatData.length + 1,
+      sender: "me",
+      message: messageInput,
+      time: "12:00",
+    };
+    setChatData([...chatData, newMessage]);
+    setMessageInput("");
+  };
+
+  React.useEffect(() => {
+    //fetch chat data using that id
+    // store chat data in state
+    // render chat data
+  }, [id]);
+
+  return (
+    <div className="w-full h-[100vh] bg-[#262E35] ">
+      <h1 className="text-white text-3xl w-full text-center bg-slate-500 h-[3vh] flex flex-col justify-center items-center">
+        {id}
+      </h1>
+      <div className="w-full h-[97vh] flex flex-col justify-between">
+        <div className="">
+          {chatData.map((message) => (
+            <div
+              key={message.id}
+              className={`w-full flex flex-col  ${
+                message.sender === "me"
+                  ? "justify-end items-end"
+                  : "justify-start items-start"
+              }`}
+            >
+              <div className="flex flex-col justify-center items-center">
+                <div className={`w-full flex flex-col justify-around`}>
+                  <p
+                    className={`text-white text-sm ${
+                      message.sender === "me"
+                        ? "text-right bg-[#36404A] w-fit"
+                        : "text-left bg-[#7269EF] w-fit"
+                    }`}
+                  >
+                    {message.message}
+                  </p>
+                  <p
+                    className={`text-[#A6B0CF] text-xs ${
+                      message.sender === "me"
+                        ? "text-right bg-[#36404A] w-fit"
+                        : "text-left bg-[#7269EF] w-fit"
+                    }`}
+                  >
+                    {message.time}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
+        <form
+          action=""
+          className="w-full p-2 flex justify-around text-[#A6B0CF]"
+          onSubmit={handleSendMessage}>
+          <input
+            type="text"
+            placeholder="type your message"
+            className="w-4/5 h-10 rounded-lg bg-[#36404A]"
+            value={messageInput}
+            onChange={(e) => setMessageInput(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="rounded-lg w-1/6 bg-[#7269EF] hover:bg-[#6159CB] h-10 transition duration-300 text-slate-200">
+            Send
+          </button>
+        </form>
       </div>
     </div>
   );
