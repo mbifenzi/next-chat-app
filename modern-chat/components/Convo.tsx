@@ -67,7 +67,7 @@ const Convo = () => {
               <div className="flex flex-col justify-center items-center">
                 <div className={`w-full flex flex-col justify-around`}>
                   <p
-                    className={`text-white text-sm ${
+                    className={`text-white text-xl p-2  rounded-lg ${
                       message.sender === "me"
                         ? "text-right bg-[#36404A] w-fit"
                         : "text-left bg-[#7269EF] w-fit"

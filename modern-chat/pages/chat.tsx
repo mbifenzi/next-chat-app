@@ -23,24 +23,24 @@ const Chat = () => {
     {
       id: 1,
       avatar: friend1,
-      name: "friend 1",
-      lastMessage: "hello",
+      name: "hamid sma9lo",
+      lastMessage: "hello him",
       lastMessageTime: "12:00",
       unreadMessages: 0,
     },
     {
       id: 2,
       avatar: friend2,
-      name: "friend 2",
-      lastMessage: "hello",
+      name: "karima benzema",
+      lastMessage: "hello him",
       lastMessageTime: "12:00",
       unreadMessages: 0,
     },
     {
       id: 3,
       avatar: friend3,
-      name: "friend 3",
-      lastMessage: "hello",
+      name: "sami hachhouch",
+      lastMessage: "hello him",
       lastMessageTime: "12:00",
       unreadMessages: 0,
     },
@@ -49,32 +49,32 @@ const Chat = () => {
     {
       id: 1,
       avatar: friend1,
-      name: "friend 1",
+      name: "hamid sma9lo",
     },
     {
       id: 2,
       avatar: friend2,
-      name: "friend 2",
+      name: "karima benzema",
     },
     {
       id: 3,
       avatar: friend3,
-      name: "friend 3",
+      name: "sami hachhouch",
     },
     {
       id: 4,
       avatar: friend1,
-      name: "friend 1",
+      name: "yassine sandwich",
     },
     {
       id: 5,
       avatar: friend2,
-      name: "friend 2",
+      name: "saida lankoul",
     },
     {
       id: 6,
       avatar: friend3,
-      name: "friend 3",
+      name: "jamil pistfrien",
     },
   ];
   return (
@@ -84,10 +84,10 @@ const Chat = () => {
       </Head>
       <Leftbar />
       <div className="flex w-screen">
-        <div className="w-[380px] flex flex-col justify-start items-start  bg-[#303841]">
-          <h1 className="text-3xl text-white p-5 text-left">Chats</h1>
-          <div className=" m-2 flex bg-[#262E35] rounded-lg">
-            <BiSearchAlt2 className="h-10 w-10   p-3 rounded-lg cursor-pointer" />
+        <div className=" space-y-5 w-[380px] flex flex-col justify-start items-start  bg-[#303841] p-2">
+          <h1 className="text-3xl text-white text-left ">Chats</h1>
+          <div className="flex bg-[#262E35] rounded-lg">
+            <BiSearchAlt2 className="h-10 w-10  rounded-lg cursor-pointer" />
             <input
               className="w-60 h-10 bg-[#262E35] text-white"
               placeholder="Search"
@@ -103,7 +103,10 @@ const Chat = () => {
             >
               {onlineFriends.map((friend) => (
                 <SwiperSlide className=" cursor-pointer">
-                  <Link href={`/chat/${friend.id}`} className="flex flex-col hover:bg-slate-400 transition duration-300  w-[95%] rounded-lg p-1">
+                  <Link
+                    href={`/chat/${friend.id}`}
+                    className="flex flex-col hover:bg-slate-400 transition duration-300  w-full bg-[#36404A] shadow-2xl rounded-lg"
+                  >
                     <div className="flex justify-center items-center">
                       <img
                         src={`${friend.avatar.src}`}
@@ -112,17 +115,22 @@ const Chat = () => {
                       />
                     </div>
                     <div className="flex flex-col justify-center items-center ">
-                      <div className="text-2xl text-white">{friend.name}</div>
+                      <div className="text-lg text-white text-center">
+                        {friend.name}
+                      </div>
                     </div>
                   </Link>
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
-          <div className="text-2xl text-white p-5 text-left">Recent</div>
+          <div className="text-2xl text-white text-left">Recent</div>
           <div className="text-4xl text-black w-full flex justify-center items-center flex-col">
             {chatData.map((chat) => (
-              <Link href={`/chat/${chat.id}`} className=" cursor-pointer flex hover:bg-slate-400 transition duration-300  gap-3 w-[95%] rounded-lg">
+              <Link
+                href={`/chat/${chat.id}`}
+                className=" cursor-pointer flex hover:bg-slate-400 transition duration-300  gap-3 w-[95%] rounded-lg"
+              >
                 <div className="flex justify-center items-center h-20">
                   <img
                     src={`${chat.avatar.src}`}
@@ -130,16 +138,15 @@ const Chat = () => {
                     className="h-14 w-14 rounded-full"
                   />
                 </div>
-                <div className="flex flex-col justify-center items-center h-20">
-                  <div className="text-2xl text-white">{chat.name}</div>
+                <div className="flex flex-col justify-center items-start h-20">
+                  <h1 className="text-2xl text-white">{chat.name}</h1>
+                  <p className="text-[#ABB4D2] text-sm">{chat.lastMessage}</p>
                 </div>
               </Link>
             ))}
           </div>
         </div>
-        {/* <Convo /> */}
-        <div className="bg-[#262E34] h-full w-full">
-
+        <div className="w-full h-full bg-[#262E35]">
         </div>
       </div>
     </div>
